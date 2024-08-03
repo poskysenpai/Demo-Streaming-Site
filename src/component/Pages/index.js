@@ -1,4 +1,4 @@
-import HomePage from './HomePage';
+import HomePage from './HomePage';  
 export { HomePage };
 import MoviesPage from './MoviesPage';
 export { MoviesPage };
