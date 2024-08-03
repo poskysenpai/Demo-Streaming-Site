@@ -5,16 +5,17 @@ import SearchBar from '../layout/SearchBar';
 const MoviesPage = () => {
     const [programType] = useState('Movie');
     const [searchQuery, setSearchQuery] = useState('');
-  
-    return (
-      <div>
-        <NavBar />
-        <Header Type={programType + 's'} />
-        <SearchBar onSearch={setSearchQuery} />
-        <DisplayFeed Type={programType.toLowerCase()} searchQuery={searchQuery} />
-        <Footer />
-      </div>
-    );
+  const [sortCriteria, setSortCriteria] = useState('');
+
+  return (
+    <div>
+      <NavBar />
+      <Header Type={programType} />
+      <SearchBar onSearch={setSearchQuery} onSort={setSortCriteria} />
+      <DisplayFeed Type={programType.toLowerCase()} searchQuery={searchQuery} sortCriteria={sortCriteria} />
+      <Footer />
+    </div>
+  );
 }
 
 export default MoviesPage

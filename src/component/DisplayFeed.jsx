@@ -4,27 +4,46 @@ import Sample from '../feed/sample.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
-const DisplayFeed = ({ Type, searchQuery }) => {
+const DisplayFeed = ({ Type, searchQuery, sortCriteria }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 21;
 
   const Placeholder = 'https://tse3.mm.bing.net/th?id=OIP.iI0fVyUG2rZEKZhRlq1rXgAAAA&pid=Api&P=0&h=220';
 
   const fetchMovies = async () => {
-    return Sample.filter(
+    let filteredMovies = Sample.filter(
       (movie) =>
         movie.releaseYear >= 2010 &&
         movie.programType === Type &&
         movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-    ).sort((a, b) => a.title.localeCompare(b.title));
+    );
+
+    switch (sortCriteria) {
+      case 'yearAsc':
+        filteredMovies = filteredMovies.sort((a, b) => a.releaseYear - b.releaseYear);
+        break;
+      case 'yearDesc':
+        filteredMovies = filteredMovies.sort((a, b) => b.releaseYear - a.releaseYear);
+        break;
+      case 'titleAsc':
+        filteredMovies = filteredMovies.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case 'titleDesc':
+        filteredMovies = filteredMovies.sort((a, b) => b.title.localeCompare(a.title));
+        break;
+      default:
+        filteredMovies = filteredMovies.sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    return filteredMovies;
   };
 
-  const { data: movies = [], isLoading, isError } = useQuery(['movies', Type, searchQuery], fetchMovies);
+  const { data: movies = [], isLoading, isError } = useQuery(['movies', Type, searchQuery, sortCriteria], fetchMovies);
 
-  // Reset to the first page when search query changes
+  // Reset to the first page when search query or sort criteria changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchQuery]);
+  }, [searchQuery, sortCriteria]);
 
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
@@ -58,7 +77,7 @@ const DisplayFeed = ({ Type, searchQuery }) => {
           <p>No movies found for the selected type.</p>
         )}
       </div>
-      <Pagination
+      <Pagination 
         postsPerPage={postsPerPage}
         totalPosts={movies.length}
         paginate={paginate}

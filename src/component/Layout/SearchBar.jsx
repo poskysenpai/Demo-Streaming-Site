@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, onSort }) => {
   const [search, setSearch] = useState('');
 
   const handleSearchChange = (e) => {
@@ -14,6 +14,10 @@ const SearchBar = ({ onSearch }) => {
     }
   };
 
+  const handleSortChange = (e) => {
+    onSort(e.target.value);
+  };
+
   return (
     <div>
       <div className="flex justify-between py-4">
@@ -22,27 +26,27 @@ const SearchBar = ({ onSearch }) => {
             type="text"
             placeholder="Search"
             onChange={handleSearchChange}
-            className="border border-gray-400 rounded-sm sm:w-8 md:w-64"
+            className="border border-gray-400 rounded-sm w-auto"
           />
           <button className="bg-custom-blue px-3">
             <FontAwesomeIcon icon={faSearch} className="text-white" />
           </button>
         </div>
-        <div className="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-24">
-          <select className="w-full sm:w-64 text-base sm:text-lg border border-gray-400 rounded-sm">
+        <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24">
+          <select onChange={handleSortChange} className="w-full sm:w-64 text-sm  border border-gray-400 rounded-sm">
             <option className="text-sm" value="sort by">
               Sort by
             </option>
-            <option className="text-sm" value="Sort by year in ascending order">
+            <option className="text-sm" value="yearAsc">
               Sort by year in ascending order
             </option>
-            <option className="text-sm" value="Sort by year in descending order">
+            <option className="text-sm" value="yearDesc">
               Sort by year in descending order
             </option>
-            <option className="text-sm" value="Sort by title in ascending order">
+            <option className="text-sm" value="titleAsc">
               Sort by title in ascending order
             </option>
-            <option className="text-sm" value="Sort by title in descending order">
+            <option className="text-sm" value="titleDesc">
               Sort by title in descending order
             </option>
           </select>

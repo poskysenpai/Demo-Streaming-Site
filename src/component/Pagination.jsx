@@ -6,7 +6,7 @@ function Pagination({ postsPerPage, totalPosts, paginate, currentPage, nextPage,
     const totalPageNumbers = Math.ceil(totalPosts / postsPerPage);
   
     return (
-      <nav className="mt-4">
+      <nav className="my-4">
         <ul className="pagination flex justify-center space-x-2">
           {currentPage > 1 && (
             <li className="page-item">
