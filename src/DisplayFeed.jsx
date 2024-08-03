@@ -9,6 +9,7 @@ const DisplayFeed = ({ Type }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 21;
 
+  const Placeholder = 'https://tse3.mm.bing.net/th?id=OIP.iI0fVyUG2rZEKZhRlq1rXgAAAA&pid=Api&P=0&h=220'
   useEffect(() => {
     // Fetch, filter, and sort data based on Type, release year, and title
     const filteredMovies = Sample.filter(
@@ -30,15 +31,15 @@ const DisplayFeed = ({ Type }) => {
 
   return (
     <div className="movies-list">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-2  lg:px-16">
         {currentPosts.length > 0 ? (
           currentPosts.map((movie, index) => (
-            <div key={index} className="p-4">
+            <div key={index} className="py-2">
               <img
-                src={movie.images["Poster Art"]?.url || image}
+                src={movie.images["Poster Art"]?.url || Placeholder}
                 alt={movie.title}
-                onError={(e) => (e.target.src = image)}
-                className="w-full h-auto rounded object-cover"
+                onError={(e) => (e.target.src = Placeholder)}
+                className="w-full sm:h-16 md:h-48 rounded object-cover"
               />
               <h2 className="text-sm font-light mb-2">{movie.title}</h2>
             </div>

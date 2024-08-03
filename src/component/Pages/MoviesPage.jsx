@@ -3,13 +3,13 @@ import { NavBar, Header, Footer } from '../layout'
 import DisplayFeed from '../../DisplayFeed'
 import SearchBar from '../layout/SearchBar';
 const MoviesPage = () => {
-    const [programType] = useState('movie');
+    const [programType] = useState('Movie');
   return (
     <div>
       <NavBar />
-      <Header  />
+      <Header Type ={programType + 's'} />
       <SearchBar/>
-      <DisplayFeed Type ={programType}/>
+      <DisplayFeed Type ={programType.toLowerCase()}/>
       <Footer /> 
     </div>
   )

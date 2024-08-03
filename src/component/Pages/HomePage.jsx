@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <div>
       <NavBar/>
-      <Header />
+      <Header Type = "Titles"/>
       
       <Footer/>    
     </div>

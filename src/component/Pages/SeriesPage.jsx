@@ -4,13 +4,13 @@ import DisplayFeed from '../../DisplayFeed'
 import SearchBar from '../layout/SearchBar';
 
 const SeriesPage = () => {
-    const [programType] = useState('series');
+    const [programType] = useState('Series');
   return (
     <div>
       <NavBar />
-      <Header  />
+      <Header Type ={programType} />
       <SearchBar/>
-      <DisplayFeed Type ={programType}/>
+      <DisplayFeed Type ={programType.toLowerCase()}/>
       <Footer /> 
     </div>
   )
