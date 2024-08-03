@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Sample from './feed/sample.json';
 import image from './assets/placeholder.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const DisplayFeed = ({ Type }) => {
   const [movies, setMovies] = useState([]);
@@ -8,10 +10,10 @@ const DisplayFeed = ({ Type }) => {
   const postsPerPage = 21;
 
   useEffect(() => {
-    // Fetch and filter data based on Type and release year
+    // Fetch, filter, and sort data based on Type, release year, and title
     const filteredMovies = Sample.filter(
       (movie) => movie.releaseYear >= 2010 && movie.programType === Type
-    );
+    ).sort((a, b) => a.title.localeCompare(b.title));
 
     setMovies(filteredMovies);
   }, [Type]);
@@ -23,6 +25,8 @@ const DisplayFeed = ({ Type }) => {
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(movies.length / postsPerPage)));
+  const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
 
   return (
     <div className="movies-list">
@@ -48,33 +52,44 @@ const DisplayFeed = ({ Type }) => {
         totalPosts={movies.length}
         paginate={paginate}
         currentPage={currentPage}
+        nextPage={nextPage}
+        prevPage={prevPage}
       />
     </div>
   );
 };
 
-function Pagination({ postsPerPage, totalPosts, paginate, currentPage }) {
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+function Pagination({ postsPerPage, totalPosts, paginate, currentPage, nextPage, prevPage }) {
+  const totalPageNumbers = Math.ceil(totalPosts / postsPerPage);
 
   return (
-    <nav>
+    <nav className="mt-4">
       <ul className="pagination flex justify-center space-x-2">
-        {pageNumbers.map((number) => (
-          <li key={number} className="page-item">
+        {currentPage > 1 && (
+          <li className="page-item">
             <button
-              onClick={() => paginate(number)}
-              className={`page-link ${
-                number === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
-              } px-4 py-2 rounded`}
+              onClick={prevPage}
+              className="page-link bg-blue-500 text-white px-4 py-1 rounded"
             >
-              {number}
+              <FontAwesomeIcon icon={faArrowLeft} />
             </button>
           </li>
-        ))}
+        )}
+        <li className="page-item">
+          
+            {currentPage}
+          
+        </li>
+        {currentPage < totalPageNumbers && (
+          <li className="page-item">
+            <button
+              onClick={nextPage}
+              className="page-link bg-blue-500 text-white px-4 py-1 rounded"
+            >
+              <FontAwesomeIcon icon={faArrowRight} />
+            </button>
+          </li>
+        )}
       </ul>
     </nav>
   );
