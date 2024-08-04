@@ -6,7 +6,10 @@ import './App.css'
 // import Header from './component/layout/Header'
 // import Footer from './component/layout/Footer'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import {HomePage, MoviesPage, SeriesPage} from './component/pages'
+//gitimport {HomePage, MoviesPage, SeriesPage} from './component/pages'
+import HomePage from './component/pages/HomePage';
+import MoviesPage from './component/pages/MoviesPage';
+import SeriesPage from './component/pages/SeriesPage';
 function App() {
   const [count, setCount] = useState(0)
 
