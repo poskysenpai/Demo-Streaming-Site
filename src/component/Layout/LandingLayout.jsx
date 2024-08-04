@@ -14,7 +14,7 @@ const LandingLayout = () => {
             className="w-32 sm:h-32 md:h-48 rounded"
             
           />
-          <p className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold bg-black bg-opacity-30">
+          <p className="absolute inset-0 flex items-center justify-center text-white text-3xl font-bold bg-black bg-opacity-30">
             Series 
           </p>
           </Link>
@@ -30,7 +30,7 @@ const LandingLayout = () => {
             onError={(e) => (e.target.src = Placeholder)}
             className="w-32 sm:h-32 md:h-48 rounded"
           />
-          <p className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold bg-black bg-opacity-30">
+          <p className="absolute inset-0 flex items-center justify-center text-white text-3xl font-bold bg-black bg-opacity-30">
             Movies
           </p>
           </Link>

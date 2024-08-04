@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import Sample from '../feed/sample.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import image from '../assets/social/placeholder.png';
 
 const DisplayFeed = ({ Type, searchQuery, sortCriteria }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -55,8 +56,8 @@ const DisplayFeed = ({ Type, searchQuery, sortCriteria }) => {
   const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(movies.length / postsPerPage)));
   const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error loading movies.</p>;
+  if (isLoading) return <div className='mb-52 '><p>Loading...</p>;</div>
+  if (isError) return <div className='mb-52 '><p>Oops, something went wrong... </p></div>;
 
   return (
     <div className="movies-list">

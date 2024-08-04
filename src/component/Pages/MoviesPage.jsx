@@ -8,7 +8,7 @@ const MoviesPage = () => {
   const [sortCriteria, setSortCriteria] = useState('');
 
   return (
-    <div>
+    <div className='h-dvh'>
       <NavBar />
       <Header Type={programType} />
       <SearchBar onSearch={setSearchQuery} onSort={setSortCriteria} />

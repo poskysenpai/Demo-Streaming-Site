@@ -4,7 +4,7 @@ import { NavBar, Header, Footer,LandingLayout} from '../layout'
 
 const HomePage = () => {
   return (
-    <div>
+    <div className='h-dvh'>
       <NavBar/>
       <Header Type = "Titles"/>
       <LandingLayout/>
