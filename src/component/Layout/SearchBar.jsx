@@ -20,7 +20,7 @@ const SearchBar = ({ onSearch, onSort }) => {
 
   return (
     <div>
-      <div className="flex justify-between py-4">
+      <div className="flex justify-between py-4 mx-5 md:mx-0">
         <div className="sm:pl-5 md:pl-32 flex">
           <input
             type="text"

@@ -61,7 +61,7 @@ const DisplayFeed = ({ Type, searchQuery, sortCriteria }) => {
 
   return (
     <div className="movies-list">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-2 lg:px-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 mx-5 lg:mx-0 md:grid-cols-3 lg:grid-cols-7 gap-2 lg:px-16">
         {currentPosts.length > 0 ? (
           currentPosts.map((movie, index) => (
             <div key={index} className="py-2">
