@@ -19,9 +19,9 @@ function App() {
       <Header/>
       <Footer/> */}
       <Routes>
-        <Route path="/" index element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/series" element={<SeriesPage />} />
+        <Route path="/" index element={HomePage } />
+        <Route path="/movies" element={MoviesPage} />
+        <Route path="/series" element={SeriesPage } />
        
       </Routes>
     </>
