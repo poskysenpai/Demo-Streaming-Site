@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import Sample from '../feed/sample.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import image from '../assets/social/placeholder.png';
+
 
 const DisplayFeed = ({ Type, searchQuery, sortCriteria }) => {
   const [currentPage, setCurrentPage] = useState(1);

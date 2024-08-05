@@ -11,8 +11,8 @@ const NavBar = () => {
   return (
     <div>
       <div className="flex justify-between items-center w-screen h-12 bg-custom-blue">
-        <div className="sm:ml-10 lg:ml-32">
-          <h1 className="text-white sm:text-xl lg:text-2xl font-medium">DEMO Streaming</h1>
+        <div className="ml-10 lg:ml-32">
+          <h1 className="text-white text-xl lg:text-2xl font-medium">DEMO Streaming</h1>
         </div>
         <div className="relative">
           <nav className="hidden md:flex md:mr-10 lg:mr-20">
