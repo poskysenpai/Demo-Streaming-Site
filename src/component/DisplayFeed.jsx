@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import Sample from '../feed/sample.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-
+import {Link} from 'react-router-dom'
 
 const DisplayFeed = ({ Type, searchQuery, sortCriteria }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -61,6 +61,7 @@ const DisplayFeed = ({ Type, searchQuery, sortCriteria }) => {
 
   return (
     <div className="movies-list">
+       <Link to ="/" className="text-blue-500 flex justify-start pl-5 lg:pl-20"> <FontAwesomeIcon icon={faArrowLeft} /></Link>
       <div className="grid grid-cols-1 sm:grid-cols-2 mx-5 lg:mx-0 md:grid-cols-3 lg:grid-cols-7 gap-2 lg:px-16">
         {currentPosts.length > 0 ? (
           currentPosts.map((movie, index) => (
